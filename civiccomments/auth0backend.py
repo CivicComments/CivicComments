@@ -55,7 +55,7 @@ class Auth0(BaseOAuth2):
 
     def get_management_api_token(self):
 
-        payload = "{\"grant_type\":\"client_credentials\",\"client_id\": \"%s\",\"client_secret\": \"%s\",\"audience\": \"https://crisisprofile.auth0.com/api/v2/\"}" % (settings.AUTH0_MANAGEMENT_KEY, settings.AUTH0_MANAGEMENT_SECRET)
+        payload = "{\"grant_type\":\"client_credentials\",\"client_id\": \"%s\",\"client_secret\": \"%s\",\"audience\": \"https://civiccomments.auth0.com/api/v2/\"}" % (settings.AUTH0_MANAGEMENT_KEY, settings.AUTH0_MANAGEMENT_SECRET)
 
         headers = { 'content-type': "application/json" }
 

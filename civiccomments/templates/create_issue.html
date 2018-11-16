@@ -1,0 +1,7 @@
+{% extends "base.html" %}
+{% block h1 %}Create issue{% endblock %}
+{% block container %}
+<div id="create-issue-app">
+  <strong>Title:</strong> <input type="text" class="form-control" v-model="title" /> <strong>Description:</strong> <textarea class="form-control" v-model="description"></textarea><button v-on:click="save"  class="btn btn-primary">Save</button>
+</div>
+{% endblock %}
