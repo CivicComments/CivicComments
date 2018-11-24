@@ -1,6 +1,21 @@
 {% extends "base.html" %}
+{% block extra_js %}
+window.issueUuid = '{{ uuid }}';
+{% endblock %}
 {% block h1 %}Issue: {{ title }} {% endblock %}
 {% block container %}
+<div id="issue-app">
 <h3>Description</h3>
 {{ description }}
+<ul>
+{% for comment in comments %}
+<li>By {{ comment.authored_by.get_full_name }} at {{ comment.created_at }}<br/> {{ comment.content }}</li>
+{% endfor %}
+</ul>
+ {% if user.is_authenticated %}.
+<p><strong>Comment</strong> <textarea v-model="new_comment" class="form-control"></textarea><button v-on:click="saveComment" class="btn btn-primary">Save</button></p>
+</div>
+{% else %}
+<a href="/login/auth0">Login to comment</a>
+{% endif %}
 {% endblock %}

@@ -30,5 +30,5 @@ class Comment(models.Model):
     short_summary = models.TextField(default='')
     content = models.TextField()
     tags = JSONField(default=[])
-    is_approved = models.BooleanField(default=False)
+    is_approved = models.BooleanField(default=True)
     other_data = JSONField(default={})

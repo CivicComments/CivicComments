@@ -22,8 +22,10 @@ urlpatterns = [
     url(r'^about$', views.aboutpage),
     url(r'^api/create_issue$', views.api_create_issue),
     url(r'^create_issue$', views.create_issue),
+    url(r'^api/save_comment$', views.create_comment),
+    url(r'^issues$', views.view_issues),
     url(r'^admin/', admin.site.urls),
-    url(r'^issue/(?P<uuid>[0-9a-f-]+)', views.view_issue), 
+    url(r'^issue/(?P<uuid>[0-9a-f-]+)', views.view_issue),
     url(r'^', include('django.contrib.auth.urls', namespace='auth')),
     url(r'^', include('social_django.urls', namespace='social')),
 ]
