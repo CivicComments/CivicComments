@@ -38,8 +38,15 @@ INSTALLED_APPS = [
     'civiccomments',
     'sslserver',
     'seattle_buildings',
-    'social_django'
+    'social_django',
+    'djstripe'
 ]
+
+STRIPE_LIVE_PUBLIC_KEY = os.environ.get("STRIPE_LIVE_PUBLIC_KEY")
+STRIPE_LIVE_SECRET_KEY = os.environ.get("STRIPE_LIVE_SECRET_KEY")
+STRIPE_TEST_PUBLIC_KEY = os.environ.get("STRIPE_TEST_PUBLIC_KEY")
+STRIPE_TEST_SECRET_KEY = os.environ.get("STRIPE_TEST_SECRET_KEY")
+STRIPE_LIVE_MODE = False  # Change to True in production
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',

@@ -1,8 +1,8 @@
 from django.shortcuts import redirect, render
 from django.http import HttpResponse, JsonResponse
-from . import settings
+import settings
 import requests
-from .models import *
+from models import *
 from django.core.paginator import EmptyPage, PageNotAnInteger, Paginator
 
 def homepage(request):

@@ -1,7 +1,7 @@
 import requests
 from social_core.backends.oauth import BaseOAuth2
 import json
-from . import settings
+import settings
 
 class Auth0(BaseOAuth2):
     """Auth0 OAuth authentication backend"""
@@ -36,21 +36,21 @@ class Auth0(BaseOAuth2):
         ("created_at", "created_at"),
         ("logins_count", "logins_count"),
     ]
-    print("auth0 class")
+    print "auth0 class"
 
     def authorization_url(self):
         """Return the authorization endpoint."""
-        print('auth url')
+        print 'auth url'
         return "https://" + self.setting('DOMAIN') + "/authorize"
 
     def access_token_url(self):
         """Return the token endpoint."""
-        print('auth token')
+        print 'auth token'
         return "https://" + self.setting('DOMAIN') + "/oauth/token"
 
     def get_user_id(self, details, response):
         """Return current user id."""
-        print('user id')
+        print 'user id'
         return details['user_id']
 
     def get_management_api_token(self):
@@ -60,16 +60,16 @@ class Auth0(BaseOAuth2):
         headers = { 'content-type': "application/json" }
 
         response = requests.post("https://civiccomments.auth0.com/oauth/token", data=payload, headers=headers)
-        print(response.text)
+        print response.text
 
 
         return response.json()['access_token']
 
     def get_user_details(self, response):
         url = 'https://' + self.setting('DOMAIN') + '/userinfo'
-        print(url)
+        print url
         headers = {'authorization': 'Bearer ' + response['access_token']}
-        print('headers', headers)
+        print 'headers', headers
         resp = requests.get(url, headers=headers)
         userinfo = resp.json()
         token = self.get_management_api_token()
@@ -77,8 +77,8 @@ class Auth0(BaseOAuth2):
 
         url = 'https://civiccomments.auth0.com/api/v2/users/' + userinfo['sub']
         resp = requests.get(url, headers=headers)
-        print('all', list(resp.json().keys()))
-        print('userinfo', userinfo)
+        print 'all', resp.json().keys()
+        print 'userinfo', userinfo
 
         d = {'username': userinfo['nickname'],
                 'first_name': userinfo.get('given_name'),

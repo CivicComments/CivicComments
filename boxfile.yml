@@ -1,5 +1,8 @@
 run.config:
   engine: python
+  engine.config:
+
+    runtime: python-3.6
   extra_packages:
     - gdal-lib
     - nginx

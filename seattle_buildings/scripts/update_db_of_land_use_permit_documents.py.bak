@@ -60,7 +60,7 @@ def get_list_of_documents(id):
     html_rows = soup.find('tbody').find_all('tr')
     rows = []
     for html_row in html_rows:
-        print('row')
+        print 'row'
         columns = {}
         html_columns = html_row.find_all('td')
         for i, html_column in enumerate(html_columns):
@@ -85,16 +85,16 @@ def get_list_of_documents(id):
     return rows
 
 def download_building_document(id):
-    import urllib.request, urllib.error, urllib.parse
+    import urllib2
     download_url = "http://web6.seattle.gov/dpd/edms/GetDocument.aspx?id=%s" % (id)
-    response = urllib.request.urlopen(download_url)
+    response = urllib2.urlopen(download_url)
     file = open("/tmp/%s.pdf" % (id), 'w')
     file.write(response.read())
     file.close()
 
 def pdf2txt(fname, pages=None):
     # http://stanford.edu/~mgorkove/cgi-bin/rpython_tutorials/Using%20Python%20to%20Convert%20PDFs%20to%20Text%20Files.php#4
-    from io import StringIO
+    from cStringIO import StringIO
     from pdfminer.pdfinterp import PDFResourceManager, PDFPageInterpreter
     from pdfminer.converter import TextConverter
     from pdfminer.layout import LAParams

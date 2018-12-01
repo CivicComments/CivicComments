@@ -15,9 +15,7 @@ Including another URLconf
 """
 from django.conf.urls import url, include
 from django.contrib import admin
-from . import views
-
-app_name="civiccomments"
+import views
 
 urlpatterns = [
     url(r'^$', views.homepage),
@@ -28,7 +26,7 @@ urlpatterns = [
     url(r'^issues$', views.view_issues),
     url(r'^admin/', admin.site.urls),
     url(r'^issue/(?P<uuid>[0-9a-f-]+)', views.view_issue),
-    url(r'^', include(('django.contrib.auth.urls', 'auth'), namespace='auth')),
-    url(r'^', include(('social_django.urls', 'social_django'), namespace='social')),
-    url(r"^stripe/", include(("djstripe.urls", 'djstripe'), namespace="djstripe")),
+    url(r'^', include('django.contrib.auth.urls', namespace='auth')),
+    url(r'^', include('social_django.urls', namespace='social')),
+    url(r"^stripe/", include("djstripe.urls", namespace="djstripe")),
 ]
